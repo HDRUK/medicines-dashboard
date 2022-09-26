@@ -1,2 +1,2 @@
 Contact: DataProtection@hdruk.ac.uk
-Policy: https://github.com/HDRUK/gateway-web/security-vulnerability-discloure-policy.md
+Policy: https://github.com/HDRUK/gateway-web/security-vulnerability-disclosure-policy.md
