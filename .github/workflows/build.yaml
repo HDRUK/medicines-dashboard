@@ -6,7 +6,7 @@ on:
     branches: [ "GAT-1523" ]
 
 env:
-  PROJECT_ID: secret.PROJECT_ID # TODO: update Google Cloud project id
+  PROJECT_ID: secret.PROJECT_ID # TODO: update Google Cloud project id.
   GAR_LOCATION: secret.GAR_LOCATION # TODO: update Artifact Registry location
   SERVICE: secret.SERVICE_NAME # TODO: update Cloud Run service name
   REGION: secret.SERVICE_REGION # TODO: update Cloud Run service region
