@@ -3,7 +3,7 @@ name: Build and Deploy to Cloud Run
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "GAT-1523" ]
 
 env:
   PROJECT_ID: secret.PROJECT_ID # TODO: update Google Cloud project id
