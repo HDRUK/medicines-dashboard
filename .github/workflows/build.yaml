@@ -36,7 +36,7 @@ jobs:
       - name: Login to GAR
         uses: docker/login-action@v2
         with:
-          registry: "$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$PROJECT_ID"
+          registry: "{{ $GAR_LOCATION }}-docker.pkg.dev/{{ $PROJECT_ID }}/{{ $PROJECT_ID }}"
           username: oauth2accesstoken
           password: ${{ steps.auth.outputs.access_token }}
 
