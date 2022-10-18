@@ -35,7 +35,7 @@ jobs:
       - name: Login to GAR
         uses: docker/login-action@v2
         with:
-          registry: europe-west1-docker.pkg.dev/hdruk-gateway-dev/hdruk-gateway-dev
+          registry: '${{ secrets.GAR_LOCATION }}'-docker.pkg.dev/'${{ secrets.PROJECT_ID }}'/'${{ secrets.PROJECT_ID }}'
           username: oauth2accesstoken
           password: ${{ steps.auth.outputs.access_token }}
 
