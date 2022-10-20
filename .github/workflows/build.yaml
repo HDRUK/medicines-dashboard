@@ -42,8 +42,8 @@ jobs:
 
       - name: Build and Push Container
         run: |-
-          docker build -t europe-west1-docker.pkg.dev/hdruk-gateway-dev/hdruk-gateway-dev:${{ github.sha }} ./
-          docker push europe-west1-docker.pkg.dev/hdruk-gateway-dev/hdruk-gateway-dev:${{ github.sha }}
+          docker build -t europe-west1-docker.pkg.dev/hdruk-gateway-dev/hdruk-gateway-dev/medicines-dashboard:${{ github.sha }} ./
+          docker push europe-west1-docker.pkg.dev/hdruk-gateway-dev/hdruk-gateway-dev/medicines-dashboard:${{ github.sha }}
 
       # END - Docker auth and build
 
