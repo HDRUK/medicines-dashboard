@@ -43,7 +43,7 @@ jobs:
       - name: Build and Push Container
         shell: bash
         env: 
-          GAR_LOCATION: '{{ secrets.GAR_LOCATION }}'
+          GAR_LOCATION: '${{ secrets.GAR_LOCATION }}'
           SERVICE: '${{ secrets.SERVICE_NAME }}'
           PROJECT_ID: '${{ secrets.PROJECT_ID }}'
           
