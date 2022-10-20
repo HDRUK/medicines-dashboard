@@ -41,9 +41,15 @@ jobs:
           password: ${{ steps.auth.outputs.access_token }}
 
       - name: Build and Push Container
+      - shell: bash
+        env: 
+          GAR_LOCATION: '{{ secrets.GAR_LOCATION }}'
+          SERVICE: '${{ secrets.SERVICE_NAME }}'
+          PROJECT_ID: '${{ secrets.PROJECT_ID }}'
+          
         run: |-
-          docker build -t europe-west1-docker.pkg.dev/hdruk-gateway-dev/hdruk-gateway-dev/medicines-dashboard:${{ github.sha }} ./
-          docker push europe-west1-docker.pkg.dev/hdruk-gateway-dev/hdruk-gateway-dev/medicines-dashboard:${{ github.sha }}
+          docker build -t "$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$SERVICE/medicines-dashboard:${{ github.sha }}" ./
+          docker push "$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$SERVICE/medicines-dashboard:${{ github.sha }}"
 
       # END - Docker auth and build
 
