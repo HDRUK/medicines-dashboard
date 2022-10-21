@@ -48,20 +48,7 @@ jobs:
           PROJECT_ID: '${{ secrets.PROJECT_ID }}'
           
         run: |-
-          docker build -t "$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$SERVICE/medicines-dashboard:v1" ./
-          docker push "$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$SERVICE/medicines-dashboard:v1"
+          docker build -t europe-west1-docker.pkg.dev/hdruk-gateway-dev/hdruk-gateway-dev/medicines-dashboard:${{ github.sha }} ./
+          docker push europe-west1-docker.pkg.dev/hdruk-gateway-dev/hdruk-gateway-dev/medicines-dashboard:${{ github.sha }}
 
       # END - Docker auth and build
-
-      - name: Deploy to Cloud Run
-        id: deploy
-        uses: google-github-actions/deploy-cloudrun@v0
-        with:
-          service: ${{ env.SERVICE }}
-          region: ${{ env.REGION }}
-          # NOTE: If using a pre-built image, update the image name here
-          image: ${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{ github.sha }}
-
-      # If required, use the Cloud Run url output in later steps
-      - name: Show Output
-        run: echo ${{ steps.deploy.outputs.url }}
