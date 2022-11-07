@@ -48,7 +48,7 @@ jobs:
           PROJECT_ID: '${{ secrets.PROJECT_ID }}'
           
         run: |-
-          docker build -t europe-west1-docker.pkg.dev/hdruk-gateway-dev/hdruk-gateway-dev/medicines-dashboard:${{ github.sha }} ./
-          docker push europe-west1-docker.pkg.dev/hdruk-gateway-dev/hdruk-gateway-dev/medicines-dashboard:${{ github.sha }}
+          docker build -t europe-west1-docker.pkg.dev/hdruk-gateway-dev/hdruk-gateway/medicines-dashboard:${{ github.sha }} ./
+          docker push europe-west1-docker.pkg.dev/hdruk-gateway-dev/hdruk-gateway/medicines-dashboard:${{ github.sha }}
 
       # END - Docker auth and build
