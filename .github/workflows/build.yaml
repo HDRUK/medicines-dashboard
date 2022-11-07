@@ -11,6 +11,8 @@ env:
   SERVICE: '${{ secrets.SERVICE_NAME }}' # TODO: update Cloud Run service name
   REGION: '${{ secrets.SERVICE_REGION }}' # TODO: update Cloud Run service region
   DOCKER_USER: '${{ secrets.DOCKER_AUTH_USER }}'
+  APP_NAME: medicines-dashboard
+  VERSION: v1.0.0
 
 jobs:
   deploy:
@@ -48,7 +50,7 @@ jobs:
           PROJECT_ID: '${{ secrets.PROJECT_ID }}'
           
         run: |-
-          docker build -t europe-west1-docker.pkg.dev/hdruk-gateway-dev/hdruk-gateway/medicines-dashboard:${{ github.sha }} ./
-          docker push europe-west1-docker.pkg.dev/hdruk-gateway-dev/hdruk-gateway/medicines-dashboard:${{ github.sha }}
+          docker build -t europe-west1-docker.pkg.dev/hdruk-gateway-dev/hdruk-gateway/$APP_NAME:$VERSION ./
+          docker push europe-west1-docker.pkg.dev/hdruk-gateway-dev/hdruk-gateway/$APP_NAME:$VERSION
 
       # END - Docker auth and build
