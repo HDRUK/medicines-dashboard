@@ -13,7 +13,7 @@ env:
   REGION: '${{ secrets.SERVICE_REGION }}' # TODO: update Cloud Run service region
   DOCKER_USER: '${{ secrets.DOCKER_AUTH_USER }}'
   APP_NAME: medicines-dashboard
-  VERSION: v1.0.0
+  # VERSION: v1.0.0
 
 jobs:
   deploy:
@@ -27,6 +27,21 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Generate build number
+        id: buildnumber
+        uses: einaregilsson/build-number@v2
+        with:
+          token: ${{secrets.github_token}}
+
+      - name: Read VERSION file
+        id: getversion
+        run: echo "::set-output name=version::$(cat RELEASE.version)"
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: v${{ steps.getversion.outputs.version }}.${{ steps.buildnumber.outputs.build_number }}
+          prerelease: false    
 
       - name: Google Auth
         id: auth
@@ -51,7 +66,7 @@ jobs:
           PROJECT_ID: '${{ secrets.PROJECT_ID }}'
           
         run: |-
-          docker build -t europe-west1-docker.pkg.dev/hdruk-gateway-dev/hdruk-gateway/$APP_NAME:$VERSION ./
-          docker push europe-west1-docker.pkg.dev/hdruk-gateway-dev/hdruk-gateway/$APP_NAME:$VERSION
+          docker build -t europe-west1-docker.pkg.dev/hdruk-gateway-dev/hdruk-gateway/$APP_NAME:${{ steps.getversion.outputs.version }} ./
+          docker push europe-west1-docker.pkg.dev/hdruk-gateway-dev/hdruk-gateway/$APP_NAME:v${{ steps.getversion.outputs.version }}
 
       # END - Docker auth and build
