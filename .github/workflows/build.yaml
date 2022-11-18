@@ -32,7 +32,7 @@ jobs:
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: ${{ steps.getversion.outputs.version }}-${{ github.run_id }}
+          automatic_release_tag: ${{ steps.getversion.outputs.version }}
           prerelease: false    
 
       - name: Google Auth
@@ -58,7 +58,7 @@ jobs:
           PROJECT_ID: '${{ secrets.PROJECT_ID }}'
           
         run: |-
-          docker build -t europe-west1-docker.pkg.dev/hdruk-gateway-dev/hdruk-gateway/${{ steps.getversion.outputs.version }} ./
-          docker push europe-west1-docker.pkg.dev/hdruk-gateway-dev/hdruk-gateway/${{ steps.getversion.outputs.version }}
+          docker build -t europe-west1-docker.pkg.dev/hdruk-gateway-dev/hdruk-gateway/${{ steps.getversion.outputs.version }}::${{ github.sha }} ./
+          docker push europe-west1-docker.pkg.dev/hdruk-gateway-dev/hdruk-gateway/${{ steps.getversion.outputs.version }}::${{ github.sha }} 
 
       # END - Docker auth and build
