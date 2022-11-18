@@ -19,8 +19,6 @@ jobs:
     permissions:
       contents: write
       id-token: write
-      pull-requests: write
-      checks: write
 
     runs-on: ubuntu-latest
     environment: dev
@@ -34,7 +32,7 @@ jobs:
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: ${{ steps.getversion.outputs.version }}.${{ github.run_id }}
+          automatic_release_tag: ${{ steps.getversion.outputs.version }}-${{ github.run_id }}
           prerelease: false    
 
       - name: Google Auth
