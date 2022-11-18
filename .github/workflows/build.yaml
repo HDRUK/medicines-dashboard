@@ -58,7 +58,7 @@ jobs:
           PROJECT_ID: '${{ secrets.PROJECT_ID }}'
           
         run: |-
-          docker build -t europe-west1-docker.pkg.dev/hdruk-gateway-dev/hdruk-gateway/$APP_NAME:${{ steps.getversion.outputs.version }} ./
-          docker push europe-west1-docker.pkg.dev/hdruk-gateway-dev/hdruk-gateway/$APP_NAME:v${{ steps.getversion.outputs.version }}
+          docker build -t europe-west1-docker.pkg.dev/hdruk-gateway-dev/hdruk-gateway/${{ steps.getversion.outputs.version }} ./
+          docker push europe-west1-docker.pkg.dev/hdruk-gateway-dev/hdruk-gateway/${{ steps.getversion.outputs.version }}
 
       # END - Docker auth and build
