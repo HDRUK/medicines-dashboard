@@ -23,7 +23,7 @@ jobs:
       id-token: write
 
     runs-on: ubuntu-latest
-    environment: dev
+    environment: legacy-dev
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -107,7 +107,7 @@ jobs:
       id-token: write
 
     runs-on: ubuntu-latest
-    environment: dev-legacy
+    environment: legacy-dev
     steps:
       - name: Google Auth
         id: auth
