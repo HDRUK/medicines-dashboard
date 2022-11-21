@@ -65,9 +65,47 @@ jobs:
 
       # END - Docker auth and build
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       # Deployment please don't modify anything here as the infrastructure is controlled by terraform any changes here please agree with chris and reuben
   deploy:
     needs: build
+    permissions:
+      contents: write
+      id-token: write
+
     runs-on: ubuntu-latest
     steps:
       - name: Google Auth
