@@ -107,6 +107,7 @@ jobs:
       id-token: write
 
     runs-on: ubuntu-latest
+    environment: dev-legacy
     steps:
       - name: Google Auth
         id: auth
@@ -122,5 +123,5 @@ jobs:
         env:
           PROJECT_ID: '${{ secrets.PROJECT_ID }}'
         with:
-          args: run services update '${{ env.APP_NAME }}' --update-image=${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/hdruk-gateway/${{ steps.getversion.outputs.version }}:${{ github.sha }}
+          args: run services update '${{ env.APP_NAME }}' --image=${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/hdruk-gateway/${{ steps.getversion.outputs.version }}:${{ github.sha }}
       # If required, use the Cloud Run url output in later steps
