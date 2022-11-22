@@ -82,7 +82,7 @@ const Example = (props) => {
       <div>
         
         <header>
-              <h2>HDRUK Medicines Dashboard (DEMO ONLY, ALL DATA IS FAKE!)</h2>
+              <h2>HDRUK Medicines Dashboard (DEMO DATA ONLY)</h2>
         </header>
        
        
