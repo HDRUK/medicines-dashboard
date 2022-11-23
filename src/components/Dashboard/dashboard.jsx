@@ -82,7 +82,7 @@ const Example = (props) => {
       <div>
         
         <header>
-              <h2>HDRUK Medicines Dashboard (DEMO DATA ONLY)</h2>
+              <h2>Medicines Dashboard (DEMO DATA ONLY)</h2>
         </header>
        
        
